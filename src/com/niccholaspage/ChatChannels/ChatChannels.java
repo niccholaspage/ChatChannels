@@ -2,6 +2,7 @@ package com.niccholaspage.ChatChannels;
 
 import java.util.logging.Logger;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.event.Listener;
@@ -39,6 +40,10 @@ public class ChatChannels extends JavaPlugin {
 		channelManager = new ChannelManager(this);
 		
 		userManager = new UserManager(this);
+		
+		for (Player player : getServer().getOnlinePlayers()){
+			userManager.loadUser(player);
+		}
 		
 		log("I am enabled!");
 	}

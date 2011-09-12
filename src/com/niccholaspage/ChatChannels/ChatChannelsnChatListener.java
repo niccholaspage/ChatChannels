@@ -1,8 +1,8 @@
 package com.niccholaspage.ChatChannels;
 
+import com.niccholaspage.ChatChannels.channel.Channel;
 import com.niccholaspage.ChatChannels.user.User;
 import com.niccholaspage.nChat.api.ChatFormatEvent;
-import com.niccholaspage.nChat.api.Node;
 import com.niccholaspage.nChat.api.nChatEventListener;
 
 public class ChatChannelsnChatListener extends nChatEventListener {
@@ -15,8 +15,10 @@ public class ChatChannelsnChatListener extends nChatEventListener {
 	public void onChatFormat(ChatFormatEvent event){
 		User user = plugin.getUserManager().getUser(event.getPlayer());
 		
-		Node node = event.getNode("channel");
+		Channel channel = user.getChannel();
 		
-		node.setValue(user.getChannel().getName());
+		event.getNode("channel").setValue(channel.getName());
+		
+		event.getNode("channelnick").setValue(channel.getNick());
 	}
 }

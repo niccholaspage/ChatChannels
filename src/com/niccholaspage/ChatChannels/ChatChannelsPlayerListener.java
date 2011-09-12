@@ -17,7 +17,13 @@ public class ChatChannelsPlayerListener extends PlayerListener {
 	}
 	
 	public void onPlayerChat(PlayerChatEvent event){
+		User user = plugin.getUserManager().getUser(event.getPlayer());
 		
+		for (User otherUser : plugin.getUserManager().getUsers()){
+			if (user.getChannel() != otherUser.getChannel()){
+				event.getRecipients().remove(otherUser.getPlayer());
+			}
+		}
 	}
 	
 	public void onPlayerJoin(PlayerJoinEvent event){
