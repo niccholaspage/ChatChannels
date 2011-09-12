@@ -64,6 +64,6 @@ public class ChatChannels extends JavaPlugin {
 	}
 	
 	private void log(String message){
-		log.info("[nChatChannels] " + message);
+		log.info("[ChatChannels] " + message);
 	}
 }
