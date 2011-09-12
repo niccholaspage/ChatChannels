@@ -13,7 +13,9 @@ import com.niccholaspage.ChatChannels.ChatChannels;
 public class ChannelManager {
 	private final Configuration config;
 	
-	private Set<Channel> channels;
+	private Channel defaultChannel = null;
+	
+	private final Set<Channel> channels;
 	
 	public ChannelManager(ChatChannels plugin){
 		File channelFile = new File(plugin.getDataFolder(), "players");
@@ -34,6 +36,8 @@ public class ChannelManager {
 	private void load(){
 		config.load();
 		
+		//Write default everything
+		
 		List<String> keys = config.getKeys("channels");
 		
 		for (String key : keys){
@@ -41,6 +45,10 @@ public class ChannelManager {
 			
 			channels.add(channel);
 		}
+		
+		String defaultChannelName = config.getString("defaultchannel");
+		
+		defaultChannel = getChannel(defaultChannelName);
 	}
 	
 	public Channel getChannel(String name){
@@ -51,5 +59,9 @@ public class ChannelManager {
 		}
 		
 		return null;
+	}
+	
+	public Channel getDefaultChannel(){
+		return defaultChannel;
 	}
 }

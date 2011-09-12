@@ -68,7 +68,7 @@ public class UserManager {
 			Channel channel = plugin.getChannelManager().getChannel(channelName);
 			
 			if (channelName == null || channel == null){
-				//Default channel
+				user.setChannel(plugin.getChannelManager().getDefaultChannel());
 			}
 			
 			user.setChannel(channel);
@@ -118,7 +118,7 @@ public class UserManager {
 		
 		User user = new User(player);
 		
-		//Set default channel
+		user.setChannel(plugin.getChannelManager().getDefaultChannel());
 		
 		addUser(user);
 		
