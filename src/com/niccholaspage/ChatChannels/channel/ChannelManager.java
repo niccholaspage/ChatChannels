@@ -46,7 +46,7 @@ public class ChannelManager {
 			channels.add(channel);
 		}
 		
-		String defaultChannelName = config.getString("defaultchannel");
+		String defaultChannelName = config.getString("default");
 		
 		defaultChannel = getChannel(defaultChannelName);
 	}
