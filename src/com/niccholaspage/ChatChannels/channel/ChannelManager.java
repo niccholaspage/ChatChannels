@@ -41,7 +41,11 @@ public class ChannelManager {
 		List<String> keys = config.getKeys("channels");
 		
 		for (String key : keys){
-			Channel channel = new Channel(key, config.getString("channels." + key + ".nick"));
+			String node = "channels." + key;
+			
+			String nick = config.getString(node + ".nick", "no-nick");
+			
+			Channel channel = new Channel(key, nick);
 			
 			channels.add(channel);
 		}
